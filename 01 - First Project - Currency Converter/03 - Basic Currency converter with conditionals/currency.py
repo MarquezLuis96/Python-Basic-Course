@@ -1,9 +1,9 @@
 #HEADER: Here you will find the necessary values for the program to run
 #Values of the currency
-value_colombia = 3875
-value_venezuela = 311000
-value_euro = 1.1847
-value_uk = 1.31
+value_colombia = 0.000265
+value_venezuela = 0.000003215
+value_euro = 1.19
+value_uk = 1.32
 
 #Welcome - Home
 welcome = """
@@ -15,51 +15,76 @@ welcome = """
         3 - Euros (EUR)
         4 - UK Pound (GBP)
 
-Option: 
-"""
+Option: """
+
+#Casting to int
+def str_to_int(message):
+    message = int(message)
+    return message
+
+#Casting to float
+def str_to_float(message):
+    message = float(message)
+    return message
+
+#Casting to str
+def x_to_str(message):
+    message = str(message)
+    return message
+
+def exchange_multiplying(to_currency):
+    to_currency = dollars * to_currency
+    return round(to_currency, 2)
+
+def exchange_dividing(to_currency):
+    to_currency = dollars / to_currency
+    return round(to_currency, 2)
+
+#Exchange
+def exchange(to_currency):
+    return exchange_dividing(to_currency)
+
 #Capturing option value
-option = int(input(welcome))
+option = str_to_int(input(welcome))
 
 #Question
-dollars = input("How many dollars do you have?: $")
-dollars = float(dollars)
+def question():
+    dollars = str_to_float(input("How many dollars do you have?: $"))
+    dollars = round(dollars, 2)
+    return dollars
 
 #Selecting/Convertion
 if option == 1:
+    dollars = question()
     #Colombian Pesos
-    colombian_pesos = dollars * value_colombia
-    colombian_pesos = round(colombian_pesos, 2)
-    colombian_pesos = str(colombian_pesos)
+    colombian_pesos = exchange(value_colombia)
     #Printing
-    dollars = round(dollars, 2)
-    dollars = str(dollars)
+    colombian_pesos = x_to_str(colombian_pesos)
+    dollars = x_to_str(dollars)
     print("You have $" + dollars + " USD    ---->   " + colombian_pesos + " COP")
 elif option == 2:
+    dollars = question()
     #Venezuelan Bolivar
-    venezuelan_bolivars = float(dollars * value_venezuela)
-    venezuelan_bolivars = round(venezuelan_bolivars, 2)
-    venezuelan_bolivars = str(venezuelan_bolivars)
+    venezuelan_bolivars = exchange(value_venezuela)
     #Printing
-    dollars = round(dollars, 2)
-    dollars = str(dollars)
+    venezuelan_bolivars = x_to_str(venezuelan_bolivars)
+    dollars = x_to_str(dollars)
     print("You have $" + dollars + " USD    ---->   " + venezuelan_bolivars + " VES")
 elif option == 3:
+    dollars = question()
     #Euros
-    euros = float(dollars / value_euro)
-    euros = round(euros, 2)
-    euros = str(euros)
+    euros = exchange(value_euro)
     #Printing
-    dollars = round(dollars, 2)
-    dollars = str(dollars)
+    euros = x_to_str(euros)
+    dollars = x_to_str(dollars)
     print("You have $" + dollars + " USD    ---->   " + euros + " EUR")
 elif option == 4:
+    dollars = question()
     #UK Pounds
-    uk_pounds = float(dollars / value_uk)
-    uk_pounds = round(uk_pounds, 2)
-    uk_pounds = str(uk_pounds)
+    uk_pounds = exchange(value_uk)
     #Printing
-    dollars = round(dollars, 2)
-    dollars = str(dollars)
+    uk_pounds = x_to_str(uk_pounds)
+    dollars = x_to_str(dollars)
     print("You have $" + dollars + " USD    ---->   " + uk_pounds + " GBP")
 else:
     print("Type a correct option")
