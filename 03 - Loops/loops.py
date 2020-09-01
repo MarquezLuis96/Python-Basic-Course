@@ -4,17 +4,16 @@
 LIMIT = 1000
 
 
-def power_2():
+def power_2(cycles):
     cont = 0
-    powr_2 = 2**cont
-    while powr_2 < LIMIT:
-        print("(2)^(" + str(cont) + ") = " + str(powr_2) + "\n")
-        cont = cont + 1
-        powr_2 = cont**2
+    while cont < cycles:
+        print("(2)^(" + str(cont) + ") = " + str(2**cont))
+        cont += 1
 
 
 def run():
-    power_2()
+    cycles = int(input("Type the number of cycles you want to do: "))
+    power_2(cycles)
 
 
 if __name__ == '__main__':
