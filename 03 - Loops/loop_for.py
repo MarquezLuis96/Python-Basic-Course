@@ -12,6 +12,4 @@ for cont in range(1,1001):
     print(cont)
 
 
-
-for i in range(11):
-    print(11 * i)
+#
