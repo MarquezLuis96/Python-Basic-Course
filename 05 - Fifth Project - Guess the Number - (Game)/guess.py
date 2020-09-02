@@ -1,8 +1,4 @@
 import random
-import sys
-
-
-#
 
 
 def think():
